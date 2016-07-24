@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Channel 7 News</title>
+<link rel="icon" href="images/favicon.ico">
+<link rel="stylesheet" type="text/css" href="styles.css">
+<script src="jquery-1.11.3.min.js"></script>
+</head>
+<body>
+
+<div>
+<script src="fall.js"></script>
+</div>
+	<!--<input id="volume-input" type="number" max="100" min="0">-->
+<div id="overlay-left" style="text-align:center">
+    <div>
+        <h1 style="font-style: oblique;font-family: sans-serif;">Composers</h1>
+        <div style="display:inline-block">
+        <img src="images/jabara.jpg" style="border-radius:14px;width: 225px; height: 338px;">
+        <p style="font-size: 29px;font-family: monospace;margin-top: 4px;">Paul Jabara</p>
+        </div>
+
+        <div style="display:inline-block">
+        <img src="images/shaffer.jpg" style="border-radius:14px;width: 225px; height: 338px;">>
+        <p style="font-size: 29px;font-family: monospace;margin-top: 4px;">Paul Shaffer</p>
+        </div><br>
+
+        <h1 style="font-style: oblique;font-family: sans-serif;">The Girls</h1>
+        <div style="display:inline-block">
+        <img src="images/izora.jpg" style="border-radius:14px;width: 325px; height: 338px;">
+        <p style="font-size: 29px;font-family: monospace;margin-top: 4px;">Izora Armstead</p>
+        </div>
+
+        <div style="display:inline-block">
+        <img src="images/martha.jpg" style="border-radius:14px;width: 325px; height: 338px;">>
+        <p style="font-size: 29px;font-family: monospace;margin-top: 4px;">Martha Wash</p>
+        </div>
+    </div>
+</div>
+
+<div id="overlay-right">
+    <div style="text-align:center">
+    <img id="draft" style="width:85%; max-width:2000px;" src="images/draft.jpg">
+    </div>
+ </div>
+
+<div style="text-align:center; width:100%;">
+ <button id="volume" class="buttons">Volume</button>
+ <button id="pause" class="buttons">Play</button>
+ <button id="right-b" class="buttons">Notes</button>
+ <button id="left-b" class="buttons">Authors</button>
+</div>
+
+<img id="tv" width="900px" src="images/tv.png">
+<div id="player"></div>
+<img id="static" width="900px" src="images/static.gif">
+<!--<div id="pause"></div>-->
+
+
+
+<div id="rain">
+
+	<script>
+	$( "#left-b" ).click(function() {
+	  $( "#overlay-left" )
+	  .fadeIn()
+	  .animate({
+	    width: "100%",
+	  }, 700 );
+    console.log(over1);
+	});
+	</script>
+<script>
+	$( "#overlay-left" ).click(function() {
+		$(this)
+	  .animate({
+	    width: "0%",
+	  }, 700 )
+	  .fadeOut(0.50);
+	});
+	</script>
+
+  <script>
+  $( "#right-b" ).click(function() {
+    $( "#overlay-right" )
+    .fadeIn()
+    .animate({
+      height: "100%",
+    }, 700 );
+  });
+  </script>
+<script>
+  $( "#overlay-right" ).click(function() {
+    $(this)
+    .animate({
+      height: "0%",
+    }, 700 )
+    .fadeOut(0.50);
+  });
+  </script>
+</div>
+
+
+<!--VIDEO SCRIPT-->
+
+<script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          //videoId: 'qI4oiYPhrmk',
+          videoId: 'zcjNuAsMT-E',
+          //playlist: 'qI4oiYPhrmk','zcjNuAsMT-E'
+          playerVars: {
+            playlist: 'zcjNuAsMT-E',
+            'controls':0,
+            'showinfo':0,
+        },
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        //event.target.playVideo();
+        controls = 0;
+
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          //setTimeout(stopVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      };
+    </script>
+
+<!-- REMOTE SCRIPT -->
+<script>
+var tvScreen = 0;
+var staticEnd = 1;
+$( "#pause" ).click(function() {
+   tvScreen ++;
+   
+   if (tvScreen > 0 && staticEnd == 1){
+    $("#static").remove();
+    staticEnd --;
+  }
+});
+</script>
+
+<script>
+var pauseOrPlay = 0;
+
+
+$( "#pause" ).click(function() {
+   pauseOrPlay ++;
+   if (pauseOrPlay %2 == 0){
+     player.pauseVideo();
+     $("#pause").empty().prepend("Play");
+   }else{
+     player.playVideo();
+     $("#pause").empty().prepend("Pause");
+
+   //$("#static").remove();
+   }
+
+});
+</script>
+
+<script>
+var pVolume = 1;
+
+$( "#volume" ).click(function() {
+   pVolume ++;
+   if (pVolume %2 == 0){
+    player.setVolume(0)
+   }else{
+   player.setVolume(100)
+   }
+
+});
+</script>
+
+
+
+
+</body>
+</html>

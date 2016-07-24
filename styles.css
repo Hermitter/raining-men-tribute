@@ -1,0 +1,279 @@
+@keyframes animatedBackground {
+	from { background-position: 0 0 }
+	to { background-position: 0 421px; }
+}
+
+html, body {
+	height: 100%;
+	max-height:100%;
+}
+
+body {
+	background: black;
+	margin:auto !important;
+	/*overflow: hidden;*/
+	background-image: url("images/bg.jpg");
+	-webkit-animation: animatedBackground 10s linear infinite;
+	animation: animatedBackground 1s linear infinite;
+}
+
+#tv-box {
+	height:100%;
+	width:600px;
+	display: block;
+	position:relative;
+	z-index:-94;
+	margin:auto;
+}
+
+#tv {
+	margin:auto;
+	display: block;
+	position: relative;
+	z-index: -90;
+	margin-top: 20px;
+}
+
+#video {
+	margin:auto;
+	display: block;
+	position: relative;
+	z-index: -95;
+	top: -591px;
+    left: -84px;
+    width: 658px !important;
+}
+
+.falling-men {
+	z-index: -100;
+}
+
+#overlay-left{
+	display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.71);
+    overflow: scroll;}
+
+#overlay-right{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    z-index: 11;
+    background-color: rgba(255, 255, 255, 0.71);
+    overflow: scroll;}
+
+#player {
+	margin: auto;
+    display: block;
+    position: relative;
+    z-index: -95;
+    top: -605px;
+    left: -86px;
+    height: 475px;
+    width: 632px;
+}
+
+/*#pause{
+	width: 93px;
+    height: 47px;
+    display: block;
+    position: fixed;
+    top: 595px;
+    left: 489px;
+}*/
+
+#static{
+	margin: auto;
+    display: block;
+    position: relative;
+    z-index: -92;
+    top: -1083px;
+    left: -85px;
+    width: 628px;
+    height: 500px;
+}
+
+#left-b {
+    border-radius: 1px;
+    color: white;
+    background-color: black;
+    border-color: white;
+    margin-top: 1px;
+}
+
+
+#right-b {
+    border-radius: 1px;
+    color: white;
+    background-color: black;
+    border-color: white;
+    margin-top: 1px;
+}
+
+#pause {
+    border-radius: 1px;
+    color: white;
+    background-color: black;
+    border-color: white;
+    margin-top: 1px;
+}
+
+#volume {
+    border-radius: 1px;
+    color: white;
+    background-color: black;
+    border-color: white;
+    margin-top: 1px;
+}
+
+.buttons {
+	width: 110px;
+    height: 24px;
+    font-weight: bold !important;
+}
+
+#volume:active, #pause:active, #right-b:active, #left-b:active{
+	background-color:white;
+	color:black;
+	border-color:black;
+}
+
+
+/*----*****---- << Full Page >> ----*****----*/ 
+    @media only screen and (min-width:1121px) {
+
+    }
+
+
+    /*----*****---- << Desktop >> ----*****----*/   
+    
+    /* Note: Design for a width of 768px, Gutter: 30px, Unit: 32px */
+
+    @media only screen and (min-width:960px) and (max-width:1120px) {
+    }
+
+    /*----*****---- << Tablet (Portrait) >> ----*****----*/ 
+    
+    /* Note: Design for a width of 768px, Gutter: 30px, Unit: 32px */
+
+    @media only screen and (min-width:768px) and (max-width:910px) {
+    html {
+		   /* zoom: 90%;*/
+		        }
+    #static {
+    	left: -86px;
+    	top: -925px;
+		width: 489px;
+		height: 431px;
+    }
+    #player{
+    	width: 489px;
+    	height: 424px;
+    	top: -511px;
+    }
+    #tv{
+    	width:725px;
+    }
+    }
+    /*----*****---- << Mobile (Landscape) >> ----*****----*/    
+    /* Note: Design for a width of 480px */
+    @media only screen and (min-width: 580px) and (max-width: 767px) {
+        html {
+    /*zoom: 70%;*/
+        }
+    #static {
+    	left: -58px;
+    	top: -692px;
+		width: 388px;
+		height: 306px;
+    }
+    #player{
+	    width: 388px;
+	    height: 313px;
+	    top: -386px;
+    	left: -58px;
+    }
+    #tv{
+    	width:583px;
+    }
+    #draft {
+    	width:100% !important;
+    }
+    }
+
+     @media only screen and (min-width: 480px) and (max-width: 579px) {
+        html {
+    /*zoom: 70%;*/
+        }
+    #static {
+		left: -48px;
+	    top: -613px;
+	    width: 327px;
+	    height: 277px;
+    }
+    #player{
+		width: 328px;
+	    height: 271px;
+	    top: -334px;
+	    left: -53px;
+    }
+    #tv{
+    	width:482px;
+    }
+    #draft {
+    	width:100% !important;
+    }
+    }
+
+    /*----*****---- << Mobile >> ----*****----*/    
+    /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+    @media only screen and (max-width: 479px) {
+        html {
+    /*zoom: 50%*/
+        }
+
+    #static {
+		left: -37px;
+	    top: -480px;
+	    width: 284px;
+	    height: 228px;
+    }
+    #player{
+		top: -274px;
+	    left: -36px;
+	    height: 221px;
+	    width: 281px;
+    }
+    #tv{
+    	width:381px;
+    }
+    #draft {
+    	width:100% !important;
+    	height: 1005px;
+    }
+      }
+
+
+
+/*584*/
+
+
+
+
+
+
+
+
+
+
+
+
+
